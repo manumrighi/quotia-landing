@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="QUOTIA — Plataforma B2B de negociación de cotizaciones para corredoras de cereales.">
+<meta name="description" content="Quotia — la plataforma para que las corredoras de cereales negocien cotizaciones de granos de punta a punta: pedir, cotizar, negociar y adjudicar en un solo lugar.">
 <title>Quotia RFQ</title>
 <link rel="icon" type="image/png" href="quotia_symbol.png">
 <style>*{margin:0;padding:0}img{max-width:100%}</style>
@@ -11,54 +11,24 @@
 <body>
 <style>
   :root {
-    /* Neutrales con leve sesgo cálido/agro — pergamino frío, no cream de IA */
-    --bg: #F2EFE8;
-    --bg-raise: #FBFAF6;
-    --bg-sink: #E7E3D8;
-    --ink: #1B1E14;
-    --ink-soft: #4A4E3E;
-    --ink-faint: #757863;
-    --line: #D6D1C2;
-    --line-strong: #C2BCAA;
-    /* Acento grano — verde soja/maíz maduro, sobrio */
-    --accent: #5B7A3E;
-    --accent-deep: #445E2C;
-    --accent-wash: #E9EDDD;
-    /* Secundario tierra */
+    --bg: #F2EFE8; --bg-raise: #FBFAF6; --bg-sink: #E7E3D8;
+    --ink: #1B1E14; --ink-soft: #4A4E3E; --ink-faint: #757863;
+    --line: #D6D1C2; --line-strong: #C2BCAA;
+    --accent: #5B7A3E; --accent-deep: #445E2C; --accent-wash: #E9EDDD;
     --earth: #A9743B;
-    /* Semánticos (separados del acento) */
-    --ok: #3F7A4E;
-    --warn: #B07C1E;
-    --crit: #A6432E;
-    --info: #4A6C8C;
-
+    --ok: #3F7A4E; --warn: #B07C1E; --crit: #A6432E; --info: #4A6C8C;
     --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
     --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-
-    --maxw: 1080px;
-    --readw: 64ch;
-    --radius: 3px;
+    --maxw: 1080px; --readw: 64ch; --radius: 3px;
   }
-
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #14171C;
-      --bg-raise: #1C2027;
-      --bg-sink: #0F1116;
-      --ink: #E9E7DC;
-      --ink-soft: #B4B4A6;
-      --ink-faint: #7E8073;
-      --line: #2B303A;
-      --line-strong: #3A4150;
-      --accent: #9CBE6F;
-      --accent-deep: #B6D488;
-      --accent-wash: #232A1C;
-      --earth: #C79A5E;
-      --ok: #6FB07E;
-      --warn: #D2A44E;
-      --crit: #D9755E;
-      --info: #7FA6C6;
+      --bg: #14171C; --bg-raise: #1C2027; --bg-sink: #0F1116;
+      --ink: #E9E7DC; --ink-soft: #B4B4A6; --ink-faint: #7E8073;
+      --line: #2B303A; --line-strong: #3A4150;
+      --accent: #9CBE6F; --accent-deep: #B6D488; --accent-wash: #232A1C;
+      --earth: #C79A5E; --ok: #6FB07E; --warn: #D2A44E; --crit: #D9755E; --info: #7FA6C6;
     }
   }
   :root[data-theme="light"] {
@@ -81,33 +51,19 @@
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
 
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 17px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 17px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
-
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
-
   a { color: var(--accent-deep); text-underline-offset: 3px; }
-  :root[data-theme="dark"] a, :where(:root:not([data-theme="light"])) a { }
 
   .eyebrow {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent-deep);
-    margin: 0 0 14px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent-deep); margin: 0 0 14px;
     display: flex; align-items: center; gap: 10px;
   }
-  .eyebrow::before {
-    content: ""; width: 26px; height: 1.5px; background: var(--accent); display: inline-block;
-  }
+  .eyebrow::before { content: ""; width: 26px; height: 1.5px; background: var(--accent); display: inline-block; }
 
   h1, h2, h3 { font-family: var(--serif); font-weight: 600; text-wrap: balance; line-height: 1.12; letter-spacing: -0.01em; }
 
@@ -115,8 +71,7 @@
   .topbar {
     position: sticky; top: 0; z-index: 50;
     background: color-mix(in srgb, var(--bg) 86%, transparent);
-    backdrop-filter: saturate(1.2) blur(8px);
-    border-bottom: 1px solid var(--line);
+    backdrop-filter: saturate(1.2) blur(8px); border-bottom: 1px solid var(--line);
   }
   .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
   .brand { display: flex; align-items: center; }
@@ -137,51 +92,34 @@
     border-radius: var(--radius); padding: 6px 11px; cursor: pointer;
   }
   .theme-btn:hover { border-color: var(--accent); color: var(--accent-deep); }
-  @media (max-width: 720px) { .navlinks a:not(.persist) { display: none; } }
+  @media (max-width: 760px) { .navlinks a:not(.persist) { display: none; } }
 
   /* ---------- Hero ---------- */
-  .hero { padding: 84px 0 64px; position: relative; overflow: hidden; }
+  .hero { padding: 92px 0 68px; position: relative; overflow: hidden; }
   .hero .wrap { position: relative; z-index: 2; }
-  .hero h1 { font-size: clamp(40px, 7vw, 76px); margin: 6px 0 0; max-width: 15ch; }
+  .hero h1 { font-size: clamp(42px, 7vw, 78px); margin: 6px 0 0; max-width: 16ch; }
   .hero h1 em { font-style: italic; color: var(--accent-deep); }
-  .hero .lede { font-size: clamp(18px, 2.3vw, 22px); color: var(--ink-soft); max-width: 54ch; margin: 26px 0 0; line-height: 1.5; }
-  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
-  .btn {
-    font-family: var(--mono); font-size: 13px; letter-spacing: 0.03em;
-    padding: 12px 20px; border-radius: var(--radius); text-decoration: none; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 9px; transition: transform .12s ease, background .2s ease;
-  }
-  .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent-deep); }
-  :root[data-theme="dark"] .btn-primary { color: #14171C; }
-  @media (prefers-color-scheme: dark) { :where(:root:not([data-theme="light"])) .btn-primary { color: #14171C; } }
-  .btn-primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
-  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-deep); }
+  .hero .lede { font-size: clamp(18px, 2.3vw, 22px); color: var(--ink-soft); max-width: 56ch; margin: 28px 0 0; line-height: 1.5; }
 
-  /* campo de grano decorativo del hero */
   .grain-field { position: absolute; inset: 0; z-index: 1; opacity: 0.5; pointer-events: none; }
-  @media (prefers-color-scheme: dark) { :where(:root:not([data-theme="light"])) .grain-field { opacity: 0.35; } }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .grain-field { opacity: 0.35; } }
   :root[data-theme="dark"] .grain-field { opacity: 0.35; }
 
   .hero-meta {
-    display: flex; flex-wrap: wrap; gap: 0; margin-top: 56px;
+    display: flex; flex-wrap: wrap; gap: 0; margin-top: 60px;
     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
-  .hero-meta .cell { flex: 1 1 160px; padding: 20px 20px 20px 0; border-right: 1px solid var(--line); }
+  .hero-meta .cell { flex: 1 1 170px; padding: 22px 20px 22px 0; border-right: 1px solid var(--line); }
   .hero-meta .cell:last-child { border-right: 0; }
-  .hero-meta .k { font-family: var(--serif); font-size: 30px; color: var(--accent-deep); line-height: 1; }
-  .hero-meta .v { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px; }
+  .hero-meta .k { font-family: var(--serif); font-size: 26px; color: var(--accent-deep); line-height: 1.1; }
+  .hero-meta .v { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); margin-top: 10px; }
 
   /* ---------- Sections ---------- */
-  section { padding: 76px 0; border-top: 1px solid var(--line); }
+  section { padding: 78px 0; border-top: 1px solid var(--line); }
   section.first { border-top: 0; }
-  .sec-head { max-width: var(--readw); margin-bottom: 40px; }
-  .sec-head h2 { font-size: clamp(28px, 4vw, 40px); margin: 0; }
+  .sec-head { max-width: var(--readw); margin-bottom: 42px; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 41px); margin: 0; }
   .sec-head p { color: var(--ink-soft); font-size: 18px; margin: 16px 0 0; }
-
-  .prose { max-width: var(--readw); }
-  .prose p { margin: 0 0 18px; color: var(--ink-soft); }
-  .prose strong { color: var(--ink); font-weight: 600; }
 
   /* ---------- Cards grid ---------- */
   .grid { display: grid; gap: 18px; }
@@ -191,114 +129,85 @@
 
   .card {
     background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 24px; position: relative;
+    padding: 26px; position: relative;
   }
   .card h3 { font-size: 20px; margin: 0 0 8px; }
   .card p { margin: 0; color: var(--ink-soft); font-size: 15.5px; line-height: 1.55; }
   .card .num { font-family: var(--mono); font-size: 12px; color: var(--earth); letter-spacing: 0.1em; display: block; margin-bottom: 12px; }
 
-  /* ---------- Diagram containers ---------- */
-  .diagram {
-    background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 26px; overflow-x: auto;
-  }
-  .diagram pre.mermaid { background: transparent; margin: 0; text-align: center; min-width: 520px; }
-  .cap { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.03em; margin-top: 14px; }
+  /* ---------- Flujo (pasos) ---------- */
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  @media (max-width: 820px) { .flow { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .flow { grid-template-columns: 1fr; } }
+  .step { background: var(--bg-raise); padding: 26px 24px; border-right: 1px solid var(--line); position: relative; }
+  .step:last-child { border-right: 0; }
+  @media (max-width: 820px) { .step:nth-child(2) { border-right: 0; } .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--line); } }
+  @media (max-width: 480px) { .step { border-right: 0; border-bottom: 1px solid var(--line); } .step:last-child { border-bottom: 0; } }
+  .step .n { font-family: var(--mono); font-size: 12px; color: var(--accent-deep); letter-spacing: 0.08em; }
+  .step h3 { font-size: 19px; margin: 12px 0 8px; }
+  .step p { margin: 0; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+  .step .who { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--earth); display: block; margin-top: 12px; }
 
-  /* ---------- Stack (layers) ---------- */
-  .layer {
-    display: grid; grid-template-columns: 190px 1fr; gap: 22px;
-    padding: 22px 0; border-top: 1px solid var(--line); align-items: start;
-  }
-  .layer:first-child { border-top: 0; }
-  .layer .lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-deep); padding-top: 4px; }
-  .layer h3 { font-size: 19px; margin: 0 0 6px; font-family: var(--sans); font-weight: 650; letter-spacing: 0; }
-  .layer p { margin: 0 0 12px; color: var(--ink-soft); font-size: 15px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
-  .chip {
-    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.02em;
-    background: var(--bg-sink); color: var(--ink-soft); border: 1px solid var(--line);
-    border-radius: 100px; padding: 4px 11px;
-  }
-  @media (max-width: 640px) { .layer { grid-template-columns: 1fr; gap: 8px; } }
+  /* ---------- Beneficios ---------- */
+  .benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 820px) { .benefits { grid-template-columns: 1fr; } }
+  .benefit { padding: 4px 0; }
+  .benefit .bi { font-family: var(--serif); font-size: 30px; color: var(--accent-deep); line-height: 1; }
+  .benefit h3 { font-size: 19px; margin: 14px 0 8px; }
+  .benefit p { margin: 0; color: var(--ink-soft); font-size: 15.5px; line-height: 1.55; }
 
-  /* ---------- State chips (real estados) ---------- */
-  .states { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  @media (max-width: 820px) { .states { grid-template-columns: 1fr; } }
-  .statecol { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg-raise); }
-  .statecol > .h { padding: 14px 18px; border-bottom: 1px solid var(--line); background: var(--bg-sink); }
-  .statecol > .h .pfx { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--earth); }
-  .statecol > .h .t { font-family: var(--serif); font-size: 18px; display: block; margin-top: 2px; }
-  .statecol ul { list-style: none; margin: 0; padding: 12px 18px 16px; }
-  .statecol li { display: flex; align-items: center; gap: 9px; padding: 5px 0; font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); }
-  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-  .d-draft { background: var(--ink-faint); }
-  .d-live { background: var(--ok); }
-  .d-hold { background: var(--warn); }
-  .d-done { background: var(--accent); }
-  .d-dead { background: var(--crit); }
-  .note-virtual {
-    margin-top: 20px; border-left: 3px solid var(--earth); background: var(--bg-raise);
-    padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0;
-  }
-  .note-virtual .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--earth); }
-  .note-virtual p { margin: 6px 0 0; color: var(--ink-soft); font-size: 15px; }
-  .note-virtual code { font-family: var(--mono); font-size: 13px; background: var(--bg-sink); padding: 1px 6px; border-radius: 3px; color: var(--ink); }
-
-  /* ---------- Callout API ---------- */
-  .api-line { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 13.5px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
-  .api-line:last-child { border-bottom: 0; }
-  .verb { font-weight: 700; padding: 2px 8px; border-radius: 3px; font-size: 11.5px; letter-spacing: 0.04em; }
-  .v-get { background: var(--accent-wash); color: var(--accent-deep); }
-  .v-post { background: color-mix(in srgb, var(--info) 18%, transparent); color: var(--info); }
-  .api-line .path { color: var(--ink); }
-  .api-line .desc { color: var(--ink-faint); margin-left: auto; font-size: 12px; }
-  @media (max-width: 640px) { .api-line .desc { display: none; } }
-
-  /* ---------- Footer ---------- */
-  footer { border-top: 1px solid var(--line); padding: 40px 0 60px; }
-  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  footer .muted { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.03em; }
-
-  /* ---------- Módulos ---------- */
+  /* ---------- Módulos (capacidades) ---------- */
   .mod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
   @media (max-width: 860px) { .mod-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .mod-grid { grid-template-columns: 1fr; } }
-  .mod { background: var(--bg-raise); padding: 20px 22px; }
+  .mod { background: var(--bg-raise); padding: 22px 22px; }
   .mod:hover { background: var(--bg); }
   .mod .ic { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--accent-deep); text-transform: uppercase; }
   .mod h3 { font-family: var(--sans); font-weight: 650; font-size: 16.5px; letter-spacing: 0; margin: 9px 0 6px; }
   .mod p { margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
 
-  /* ---------- Roles / segmentación ---------- */
+  /* ---------- Roles ---------- */
   .roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   @media (max-width: 820px) { .roles { grid-template-columns: 1fr; } }
-  .role { border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: var(--radius); background: var(--bg-raise); padding: 22px; }
+  .role { border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: var(--radius); background: var(--bg-raise); padding: 24px; }
   .role.r2 { border-top-color: var(--earth); }
   .role.r3 { border-top-color: var(--info); }
   .role .rk { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-faint); text-transform: uppercase; }
   .role h3 { font-size: 20px; margin: 6px 0 10px; }
   .role p { margin: 0; color: var(--ink-soft); font-size: 15px; }
-  .seg-axes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
+
+  /* ---------- Segmentación (ejes) ---------- */
+  .seg-axes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
   @media (max-width: 820px) { .seg-axes { grid-template-columns: 1fr; } }
-  .axis { display: flex; gap: 13px; align-items: flex-start; padding: 16px 0; border-top: 1px solid var(--line); }
+  .axis { display: flex; gap: 13px; align-items: flex-start; padding: 18px 0; border-top: 1px solid var(--line); }
   .axis .ax-ic { font-family: var(--serif); font-size: 22px; color: var(--accent-deep); line-height: 1; flex: none; width: 26px; text-align: center; }
   .axis h4 { margin: 0 0 4px; font-family: var(--sans); font-weight: 650; font-size: 15.5px; }
   .axis p { margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
 
   /* ---------- Tabla comparativa ---------- */
+  .edge-tag { display:inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); background: var(--accent-wash); border-radius: 100px; padding: 3px 10px; margin-bottom: 16px; }
   .compare { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
   .compare-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
   .compare th, .compare td { text-align: left; padding: 15px 20px; border-bottom: 1px solid var(--line); vertical-align: top; }
   .compare thead th { font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); background: var(--bg-sink); font-weight: 500; }
   .compare thead th.us { color: var(--accent-deep); }
   .compare tbody tr:last-child td { border-bottom: 0; }
-  .compare .feat { font-weight: 600; color: var(--ink); width: 30%; }
+  .compare .feat { font-weight: 600; color: var(--ink); width: 32%; }
   .compare td.us { color: var(--ink); background: color-mix(in srgb, var(--accent-wash) 55%, transparent); }
   .compare td.them { color: var(--ink-faint); }
   .compare .yes { color: var(--ok); font-weight: 700; }
   .compare .no { color: var(--crit); font-weight: 700; }
-  .edge-tag { display:inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); background: var(--accent-wash); border-radius: 100px; padding: 3px 10px; margin-bottom: 14px; }
+
+  /* ---------- Cierre / acceso ---------- */
+  .closing { text-align: center; }
+  .closing .sec-head { margin-left: auto; margin-right: auto; }
+  .access { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  .access .pill { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.03em; color: var(--ink-soft); background: var(--bg-raise); border: 1px solid var(--line); border-radius: 100px; padding: 9px 18px; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 40px 0 60px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  footer .muted { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.03em; }
 
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -312,12 +221,10 @@
       <img class="wordmark dark" src="quotia_wordmark_dark.png" alt="Quotia">
     </div>
     <nav class="navlinks">
-      <a href="#negocio">Negocio</a>
-      <a href="#modulos">Módulos</a>
-      <a href="#segmentacion">Roles</a>
-      <a href="#ventajas">Ventajas</a>
-      <a href="#arquitectura">Arquitectura</a>
-      <a href="#integrar">Integrar</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#capacidades">Capacidades</a>
+      <a href="#ventajas">Por qué Quotia</a>
       <button class="theme-btn persist" id="themeBtn" type="button">tema</button>
     </nav>
   </div>
@@ -326,196 +233,203 @@
 <section class="hero first">
   <canvas class="grain-field" id="grain" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="eyebrow">QUOTIA · Plataforma B2B para corredoras de cereales</p>
-    <h1>La mesa de negociación de <em>cotizaciones</em>, hecha software.</h1>
+    <p class="eyebrow">Para corredoras de cereales</p>
+    <h1>Toda la negociación de tus <em>cotizaciones</em>, en un solo lugar.</h1>
     <p class="lede">
-      QUOTIA digitaliza el ciclo completo de una solicitud de cotización de granos —desde el borrador
-      hasta la adjudicación— con negociación configurable, reglas de negocio propias, estados auditables
-      y aislamiento por corredora. No es un tablero de pedidos: es la mesa de negociación, gobernada por software.
+      Quotia es la plataforma donde las corredoras piden, reciben, negocian y cierran cotizaciones de granos.
+      Del pedido a la adjudicación, con la ida y vuelta completa —oferta y contraoferta— ordenada, trazable
+      y adaptada a cómo trabaja tu corredora.
     </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#arquitectura">Ver la arquitectura →</a>
-      <a class="btn btn-ghost" href="#negocio">Cómo funciona el negocio</a>
-    </div>
 
     <div class="hero-meta">
-      <div class="cell"><div class="k">3</div><div class="v">Niveles de estado<br>Solicitud · Negociación · Ítem</div></div>
-      <div class="cell"><div class="k">EAV</div><div class="v">Atributos flexibles<br>por plantilla</div></div>
-      <div class="cell"><div class="k">n</div><div class="v">Tenants aislados<br>una corredora, un esquema</div></div>
-      <div class="cell"><div class="k">1</div><div class="v">Contrato REST<br>web, mobile, terceros</div></div>
+      <div class="cell"><div class="k">Un flujo</div><div class="v">Pedir · Cotizar<br>Negociar · Adjudicar</div></div>
+      <div class="cell"><div class="k">A tu medida</div><div class="v">Se adapta a las reglas<br>de tu negocio</div></div>
+      <div class="cell"><div class="k">Todo el rastro</div><div class="v">Cada oferta y acuerdo<br>queda registrado</div></div>
+      <div class="cell"><div class="k">Del agro</div><div class="v">Pensada para granos<br>soja · maíz · trigo</div></div>
     </div>
   </div>
 </section>
 
-<section id="negocio">
+<section id="como">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">El negocio</p>
-      <h2>Una corredora pide. Las contrapartes cotizan. Alguien se adjudica.</h2>
-      <p>Ese es el ciclo de una RFQ (Request for Quotation) de cereales. QUOTIA lo modela paso a paso,
-         con contexto agro argentino: soja, maíz y trigo; puertos como San Lorenzo o Bahía Blanca.</p>
+      <p class="eyebrow">Cómo funciona</p>
+      <h2>Del pedido al acuerdo, sin salir de la plataforma.</h2>
+      <p>El circuito de una cotización de cereales, ordenado en cuatro pasos claros. Cada actor entra donde
+         le toca y ve exactamente lo que le corresponde.</p>
     </div>
 
-    <div class="grid grid-3">
-      <div class="card reveal">
-        <span class="num">01 · EMISOR</span>
-        <h3>Solicitud</h3>
-        <p>La corredora arma una solicitud desde una <strong>plantilla</strong>: define ítems (renglones) y
-           atributos (calidad, cantidad, puerto, condición de pago). Vive como borrador hasta publicarse.</p>
+    <div class="flow reveal">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Se publica el pedido</h3>
+        <p>La corredora arma la solicitud —los ítems y las condiciones que busca: cantidad, calidad, puerto, forma de pago— y la publica a sus contrapartes.</p>
+        <span class="who">Corredora</span>
       </div>
-      <div class="card reveal">
-        <span class="num">02 · CONTRAPARTE</span>
-        <h3>Cotización</h3>
-        <p>Publicada la solicitud, las contrapartes ingresan sus ofertas por ítem. Cada campo se valida
-           contra su tipo de dato: un precio o una cantidad no pueden ser cero ni negativos.</p>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>Llegan las cotizaciones</h3>
+        <p>Cada contraparte responde con su oferta. Solo ve el pedido que le compartieron, nunca lo que ofrecen los demás.</p>
+        <span class="who">Contraparte</span>
       </div>
-      <div class="card reveal">
-        <span class="num">03 · MESA</span>
-        <h3>Negociación</h3>
-        <p>Oferta y contraoferta, turno a turno. El sistema controla completitud, campos requeridos y
-           atomicidad: un turno se aplica entero o no se aplica. Con vigencia y vencimiento por reloj.</p>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Se negocia</h3>
+        <p>Oferta y contraoferta, turno a turno, con tiempos de vigencia. Se pausa, se retoma y se ajusta hasta llegar (o no) a un acuerdo.</p>
+        <span class="who">Ambas partes</span>
       </div>
-      <div class="card reveal">
-        <span class="num">04 · EMISOR</span>
-        <h3>Adjudicación</h3>
-        <p>El emisor concierta: acepta formalmente precio y condiciones de una línea. La negociación
-           cierra concertada, declinada o vencida —y todo el recorrido queda auditado.</p>
-      </div>
-      <div class="card reveal">
-        <span class="num">FLEX</span>
-        <h3>Plantillas</h3>
-        <p>Cada solicitud hereda su forma de una plantilla configurable: qué atributos existen y cuáles son
-           <strong>requeridos, heredables o negociables</strong>. Versionadas, para no romper lo ya publicado.</p>
-      </div>
-      <div class="card reveal">
-        <span class="num">AUDIT</span>
-        <h3>Trazabilidad</h3>
-        <p>Cada cambio de estado y cada turno dejan rastro. El estado real de una negociación nunca se
-           sobrescribe —se explica— lo que hace todo el proceso reconstruible.</p>
+      <div class="step">
+        <span class="n">04</span>
+        <h3>Se adjudica</h3>
+        <p>La corredora acepta la mejor propuesta y cierra el negocio. Todo el recorrido queda registrado y disponible.</p>
+        <span class="who">Corredora</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="modulos">
+<section id="beneficios">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">Qué incluye</p>
-      <h2>Una plataforma completa, no solo un formulario de pedidos.</h2>
-      <p>QUOTIA cubre todo lo que una corredora necesita para operar: desde configurar su catálogo de
-         negocio hasta cerrar una adjudicación. Estos son los módulos que ya usan las corredoras.</p>
+      <p class="eyebrow">Beneficios</p>
+      <h2>Lo que gana tu corredora.</h2>
+      <p>No es un formulario más para recibir pedidos. Es una mesa de negociación completa que ordena la
+         operación, acelera el cierre y no pierde nada por el camino.</p>
+    </div>
+
+    <div class="benefits reveal">
+      <div class="benefit">
+        <div class="bi">◆</div>
+        <h3>Negociás, no solo recibís precios</h3>
+        <p>La mayoría de las herramientas terminan cuando llega la oferta. Quotia sostiene la contraoferta hasta el acuerdo, que es donde de verdad se define el negocio.</p>
+      </div>
+      <div class="benefit">
+        <div class="bi">▲</div>
+        <h3>Todo en un solo lugar</h3>
+        <p>Se terminan las cotizaciones perdidas en mails, planillas y mensajes sueltos. Cada pedido, oferta y cierre vive ordenado en la plataforma.</p>
+      </div>
+      <div class="benefit">
+        <div class="bi">●</div>
+        <h3>Trazabilidad total</h3>
+        <p>Quién ofertó qué, cuándo y cómo se cerró: todo queda registrado. Podés reconstruir cualquier negociación cuando lo necesites.</p>
+      </div>
+      <div class="benefit">
+        <div class="bi">■</div>
+        <h3>Se adapta a tu forma de trabajar</h3>
+        <p>Definís qué se pide, qué se negocia y qué condiciones importan en cada tipo de operación. La plataforma se amolda a tu negocio, no al revés.</p>
+      </div>
+      <div class="benefit">
+        <div class="bi">◐</div>
+        <h3>Cada quien ve lo suyo</h3>
+        <p>Corredores, administradores y contrapartes acceden solo a lo que les corresponde. Orden, control y confidencialidad entre las partes.</p>
+      </div>
+      <div class="benefit">
+        <div class="bi">✦</div>
+        <h3>Decisiones más rápidas</h3>
+        <p>Todas las ofertas de un pedido, lado a lado. Comparás precio y condiciones de un vistazo y adjudicás con criterio, sin armar comparativos a mano.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="capacidades">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Capacidades</p>
+      <h2>Todo lo que necesitás para operar.</h2>
+      <p>Una plataforma completa: desde configurar cómo trabaja tu corredora hasta cerrar el negocio y
+         analizar los resultados.</p>
     </div>
 
     <div class="mod-grid reveal">
       <div class="mod">
-        <span class="ic">Operación</span>
+        <span class="ic">Operar</span>
         <h3>Solicitudes</h3>
-        <p>Alta, edición y publicación de solicitudes con ítems y atributos. Filtros por cuenta y estado, borradores y ciclo de vida completo.</p>
+        <p>Creá, editá y publicá pedidos de cotización con sus ítems y condiciones. Seguí cada uno a lo largo de todo su ciclo.</p>
       </div>
       <div class="mod">
-        <span class="ic">Operación</span>
+        <span class="ic">Operar</span>
         <h3>Sala de negociación</h3>
-        <p>Mesa en vivo con dos vistas: emisor y contraparte. Oferta, contraoferta, pausa, cierre y adjudicación, turno a turno, con vigencia por reloj.</p>
+        <p>La mesa en vivo: oferta, contraoferta, pausa y cierre, turno a turno y con tiempos de vigencia claros.</p>
       </div>
       <div class="mod">
-        <span class="ic">Operación</span>
+        <span class="ic">Operar</span>
         <h3>Bandeja de contraparte</h3>
-        <p>Cada contraparte ve solo las solicitudes en las que participa y arma su propuesta desde su propia sala, sin ver al resto del mercado.</p>
+        <p>Cada contraparte tiene su espacio para ver sus pedidos y armar propuestas, sin acceso al resto del mercado.</p>
       </div>
       <div class="mod">
-        <span class="ic">Análisis</span>
+        <span class="ic">Analizar</span>
         <h3>Panel comparativo</h3>
-        <p>Todas las ofertas de una solicitud, lado a lado. El emisor compara precio y condiciones ítem por ítem para decidir con criterio.</p>
+        <p>Todas las ofertas de un pedido, lado a lado, para comparar precio y condiciones y decidir con criterio.</p>
       </div>
       <div class="mod">
-        <span class="ic">Análisis</span>
-        <h3>Dashboard</h3>
-        <p>Estado del negocio de un vistazo: solicitudes activas, negociaciones en curso y lo que requiere atención.</p>
+        <span class="ic">Analizar</span>
+        <h3>Tablero de control</h3>
+        <p>El estado del negocio de un vistazo: pedidos activos, negociaciones en curso y lo que necesita tu atención.</p>
       </div>
       <div class="mod">
-        <span class="ic">Configuración</span>
-        <h3>Plantillas</h3>
-        <p>Editor visual de plantillas: qué atributos existen, cuáles son requeridos, heredables o negociables. Versionadas, sin romper lo publicado.</p>
+        <span class="ic">Configurar</span>
+        <h3>Plantillas de pedido</h3>
+        <p>Definí modelos de pedido reutilizables: qué se pide, qué es obligatorio y qué queda abierto a negociar.</p>
       </div>
       <div class="mod">
-        <span class="ic">Configuración</span>
-        <h3>Atributos y catálogos</h3>
-        <p>Definí los campos de tu negocio y sus valores posibles (monedas, unidades, calidades). El modelo EAV los hace flexibles por plantilla.</p>
+        <span class="ic">Configurar</span>
+        <h3>Condiciones y catálogos</h3>
+        <p>Armá las condiciones de tu negocio y sus valores —monedas, unidades, calidades— para pedir y cotizar siempre igual.</p>
       </div>
       <div class="mod">
-        <span class="ic">Configuración</span>
-        <h3>Rubros y esquemas</h3>
-        <p>Rubros de negocio y esquemas de cotización reutilizables que estandarizan cómo se pide y cómo se cotiza en cada tipo de operación.</p>
+        <span class="ic">Organizar</span>
+        <h3>Carteras</h3>
+        <p>Agrupá tus productores y contrapartes en carteras y asigná qué corredor trabaja cada una.</p>
       </div>
       <div class="mod">
-        <span class="ic">Configuración</span>
-        <h3>Etiquetas</h3>
-        <p>Clasificá carteras, cuentas y rubros con etiquetas propias para segmentar y encontrar lo que importa.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Administración</span>
-        <h3>Personas y cuentas</h3>
-        <p>ABM de personas, cuentas y sus vínculos. La cuenta activa determina el contexto de trabajo del usuario en todo momento.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Administración</span>
-        <h3>Carteras y miembros</h3>
-        <p>Agrupá productores y contrapartes en carteras, asigná miembros y controlá quién opera sobre qué.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Seguridad</span>
-        <h3>Usuarios y roles</h3>
-        <p>Usuarios por cuenta con roles y permisos granulares. Cada acción del sistema se autoriza según el rol —nada queda librado al azar.</p>
+        <span class="ic">Administrar</span>
+        <h3>Usuarios y accesos</h3>
+        <p>Sumá a tu equipo y a tus contrapartes con el rol justo. Cada persona ve y hace solo lo que le corresponde.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="segmentacion">
+<section id="quien">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">Segmentación y roles</p>
-      <h2>Cada corredora ordena su operación a su manera.</h2>
-      <p>QUOTIA no impone una única forma de trabajar. La corredora segmenta su universo de productores y
-         contrapartes por los ejes que le sirven, y le da a cada persona exactamente el acceso que le corresponde.</p>
+      <p class="eyebrow">Para tu equipo y tus contrapartes</p>
+      <h2>Cada quien, en su lugar.</h2>
+      <p>Quotia le da a cada persona el acceso que le corresponde, y te deja segmentar tu operación como
+         mejor te sirva.</p>
     </div>
 
     <div class="roles reveal">
       <div class="role r1">
-        <span class="rk">Rol · Configura</span>
+        <span class="rk">Configura</span>
         <h3>Administrador</h3>
-        <p>Gobierna el tenant: define plantillas, atributos, catálogos, rubros, carteras y usuarios. Deja lista
-           la cancha para que el resto opere. Es quien traduce el negocio de la corredora al sistema.</p>
+        <p>Prepara la plataforma a la medida de la corredora: define cómo se pide, cómo se negocia y quién puede hacer qué. Deja todo listo para operar.</p>
       </div>
       <div class="role r2">
-        <span class="rk">Rol · Opera</span>
-        <h3>Oficial de cuenta</h3>
-        <p>El corredor que trabaja el día a día: publica solicitudes por las cuentas que tiene asignadas,
-           conduce las negociaciones y adjudica. Ve y opera solo lo suyo.</p>
+        <span class="rk">Opera</span>
+        <h3>Corredor / Oficial de cuenta</h3>
+        <p>El día a día: publica pedidos por las cuentas que maneja, conduce las negociaciones y cierra los negocios. Trabaja solo su cartera.</p>
       </div>
       <div class="role r3">
-        <span class="rk">Rol · Participa</span>
+        <span class="rk">Participa</span>
         <h3>Contraparte</h3>
-        <p>El productor o comprador del otro lado de la mesa. Cotiza y contraoferta desde su bandeja, sin
-           acceso a la operación interna ni al resto del mercado. Ve únicamente lo que se le compartió.</p>
+        <p>El productor o comprador del otro lado. Cotiza y contraoferta desde su propio espacio, sin ver la operación interna ni al resto del mercado.</p>
       </div>
     </div>
 
-    <div class="prose reveal" style="max-width:none;margin-top:40px">
-      <p style="color:var(--ink);font-family:var(--sans);font-weight:650;font-size:17px;margin-bottom:4px">Ejes de segmentación</p>
-    </div>
     <div class="seg-axes reveal">
       <div class="axis">
         <span class="ax-ic">◆</span>
-        <div><h4>Por cartera</h4><p>Agrupá productores y contrapartes en carteras y asigná qué oficial las trabaja. La cartera define el recorte de mercado de cada corredor.</p></div>
+        <div><h4>Por cartera</h4><p>Agrupá productores y contrapartes, y asigná qué corredor trabaja cada grupo. Cada uno se enfoca en su segmento.</p></div>
       </div>
       <div class="axis">
         <span class="ax-ic">▲</span>
-        <div><h4>Por cuenta</h4><p>La cuenta activa fija el contexto: un usuario opera dentro de una cuenta por vez, y solo ve solicitudes y negociaciones de esa cuenta.</p></div>
+        <div><h4>Por cuenta</h4><p>Cada usuario opera dentro de la cuenta que corresponde y ve solo los pedidos y negociaciones de ese contexto.</p></div>
       </div>
       <div class="axis">
         <span class="ax-ic">●</span>
-        <div><h4>Por rubro y etiqueta</h4><p>Clasificá el negocio por rubro (tipo de operación) y por etiquetas propias, para que cada quien encuentre y trabaje su segmento.</p></div>
+        <div><h4>Por tipo de negocio</h4><p>Clasificá tu operación con tus propias etiquetas y categorías, para que cada quien encuentre y trabaje lo suyo.</p></div>
       </div>
     </div>
   </div>
@@ -524,78 +438,52 @@
 <section id="ventajas">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">Ventaja competitiva</p>
+      <p class="eyebrow">Por qué Quotia</p>
       <h2>La diferencia está en la negociación.</h2>
-      <p>La mayoría de las plataformas de RFQ terminan cuando llegan las ofertas: recibís cotizaciones y elegís.
-         QUOTIA empieza justo ahí. La negociación es configurable, con reglas de tu negocio, y auditada de punta a punta.</p>
+      <p>Muchas herramientas de cotización terminan cuando llegan las ofertas: recibís precios y elegís.
+         Quotia empieza justo ahí, y se adapta a cómo negocia tu corredora.</p>
     </div>
 
-    <div class="grid grid-3" style="margin-bottom:38px">
-      <div class="card reveal">
-        <span class="num">◇ NEGOCIACIÓN</span>
-        <h3>Contraoferta real, no solo cotizar</h3>
-        <p>Oferta y contraoferta turno a turno, con vigencia, pausa y cierre. Un RFQ convencional recibe precios;
-           QUOTIA sostiene la ida y vuelta hasta el acuerdo.</p>
-      </div>
-      <div class="card reveal">
-        <span class="num">◇ A MEDIDA</span>
-        <h3>Reglas de tu negocio</h3>
-        <p>Qué atributos se negocian, cuáles son requeridos, qué debe ser positivo, cómo heredan las plantillas.
-           La lógica se configura —no viene enlatada e inmodificable.</p>
-      </div>
-      <div class="card reveal">
-        <span class="num">◇ CONFIABLE</span>
-        <h3>Atómico y auditado</h3>
-        <p>Cada turno se aplica entero o no se aplica. Cada cambio de estado deja rastro. El estado real nunca se
-           pisa: se explica. Reconstruís cualquier negociación.</p>
-      </div>
-    </div>
-
-    <span class="edge-tag reveal">QUOTIA vs. un RFQ convencional</span>
+    <span class="edge-tag reveal">Quotia vs. una herramienta de cotización común</span>
     <div class="compare-wrap reveal">
       <table class="compare">
         <thead>
           <tr>
             <th class="feat">&nbsp;</th>
-            <th class="us">QUOTIA</th>
-            <th>RFQ convencional</th>
+            <th class="us">Quotia</th>
+            <th>Herramienta común</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="feat">Negociación multi-turno</td>
-            <td class="us"><span class="yes">Sí</span> — oferta/contraoferta con vigencia, pausa y cierre</td>
+            <td class="feat">Negociación de ida y vuelta</td>
+            <td class="us"><span class="yes">Sí</span> — oferta y contraoferta hasta el acuerdo, con vigencia y pausa</td>
             <td class="them"><span class="no">No</span> — se recibe una cotización y se elige</td>
           </tr>
           <tr>
-            <td class="feat">Reglas de negocio configurables</td>
-            <td class="us"><span class="yes">Sí</span> — plantillas, atributos requeridos/heredables/negociables</td>
-            <td class="them">Formularios fijos, poco o nada editables</td>
+            <td class="feat">Se adapta a tu negocio</td>
+            <td class="us"><span class="yes">Sí</span> — definís qué se pide, qué se negocia y qué condiciones importan</td>
+            <td class="them">Formularios fijos, poco o nada configurables</td>
           </tr>
           <tr>
-            <td class="feat">Campos flexibles por operación</td>
-            <td class="us"><span class="yes">Sí</span> — modelo EAV por plantilla</td>
-            <td class="them">Esquema rígido, mismo formulario para todo</td>
+            <td class="feat">Comparación de ofertas</td>
+            <td class="us"><span class="yes">Sí</span> — todas las propuestas lado a lado, listas para decidir</td>
+            <td class="them">A mano, en planillas aparte</td>
           </tr>
           <tr>
-            <td class="feat">Estados granulares y auditoría</td>
-            <td class="us"><span class="yes">Sí</span> — 3 niveles, estado virtual, rastro completo</td>
-            <td class="them">Estados básicos (abierto / cerrado)</td>
+            <td class="feat">Trazabilidad completa</td>
+            <td class="us"><span class="yes">Sí</span> — cada oferta y acuerdo queda registrado y reconstruible</td>
+            <td class="them">Historial parcial o disperso</td>
           </tr>
           <tr>
-            <td class="feat">Segmentación por cartera / cuenta / rol</td>
-            <td class="us"><span class="yes">Sí</span> — aislamiento real por corredora</td>
-            <td class="them">Roles genéricos, poca segmentación</td>
+            <td class="feat">Segmentación y accesos</td>
+            <td class="us"><span class="yes">Sí</span> — por cartera, cuenta y rol; cada quien ve lo suyo</td>
+            <td class="them">Accesos genéricos, poca separación</td>
           </tr>
           <tr>
-            <td class="feat">Contexto agro argentino</td>
-            <td class="us"><span class="yes">Sí</span> — granos, puertos, condiciones del rubro</td>
-            <td class="them">Genérico, sin conocimiento del sector</td>
-          </tr>
-          <tr>
-            <td class="feat">Extensible a otros clientes</td>
-            <td class="us"><span class="yes">Sí</span> — API REST: web, mobile, integraciones</td>
-            <td class="them">App cerrada, sin superficie de integración</td>
+            <td class="feat">Pensada para el agro</td>
+            <td class="us"><span class="yes">Sí</span> — granos, puertos y condiciones del rubro</td>
+            <td class="them">Genérica, sin conocer el sector</td>
           </tr>
         </tbody>
       </table>
@@ -603,224 +491,26 @@
   </div>
 </section>
 
-<section id="arquitectura">
+<section id="acceso" class="closing">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">La arquitectura</p>
-      <h2>Un motor en la base, una API que lo gobierna.</h2>
-      <p>El estado y las reglas viven en PostgreSQL. Ningún cliente toca la base directo: todo pasa por
-         la API FastAPI, que resuelve el tenant, valida y persiste vía RPCs. Ese contrato es lo único
-         que un cliente necesita conocer.</p>
+      <p class="eyebrow" style="justify-content:center">Acceso</p>
+      <h2>Lista para usar, y lista para conectarse.</h2>
+      <p>Quotia funciona en tu navegador, sin instalar nada. Y como su lógica está separada de la interfaz,
+         puede integrarse con los sistemas que ya usa tu corredora.</p>
     </div>
-
-    <div class="diagram reveal">
-      <pre class="mermaid">
-flowchart TB
-  subgraph clients["Clientes — hablan HTTP + JWT"]
-    W["Front web actual<br/>React · Vite · TS"]
-    M["App mobile<br/>(futuro)"]
-    T["Integraciones B2B<br/>de terceros"]
-  end
-  API["API — FastAPI (Python)<br/>Auth JWT · Resolución de tenant · Validación Pydantic · Lógica de negocio"]
-  subgraph db["PostgreSQL — Supabase"]
-    RPC["RPCs / funciones<br/>persistencia atómica"]
-    SCH["Esquema por tenant<br/>aislamiento search_path"]
-    EAV["Modelo EAV<br/>atributos por plantilla"]
-  end
-  W --> API
-  M --> API
-  T --> API
-  API --> RPC
-  RPC --> SCH
-  RPC --> EAV
-      </pre>
-    </div>
-    <p class="cap">Los clientes nunca hablan con Supabase directo — el frontend consume la API vía apiClient. La base es del backend.</p>
-
-    <div class="grid grid-2" style="margin-top: 34px;">
-      <div class="card reveal">
-        <h3>Multi-tenant real</h3>
-        <p>Cada corredora es un tenant aislado. La API resuelve a qué esquema apuntar según el JWT y fija el
-           <code style="font-family:var(--mono);font-size:13px">search_path</code>: los datos de una corredora
-           nunca se cruzan con los de otra.</p>
-      </div>
-      <div class="card reveal">
-        <h3>EAV — campos que cambian</h3>
-        <p>No todas las solicitudes tienen los mismos campos. El modelo entidad-atributo-valor deja que cada
-           plantilla defina sus atributos, y valida que cada valor caiga en el campo correcto según su tipo de dato.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="estados">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">La máquina de estados</p>
-      <h2>Tres niveles que se mueven juntos.</h2>
-      <p>Una solicitud contiene negociaciones; una negociación, ítems. Cada nivel tiene su propio estado,
-         y el sistema los mantiene coherentes. Estos son los estados reales del modelo.</p>
-    </div>
-
-    <div class="states reveal">
-      <div class="statecol">
-        <div class="h"><span class="pfx">SOL_</span><span class="t">Solicitud</span></div>
-        <ul>
-          <li><span class="dot d-draft"></span>BORRADOR</li>
-          <li><span class="dot d-live"></span>ACTIVA</li>
-          <li><span class="dot d-hold"></span>PAUSADA</li>
-          <li><span class="dot d-done"></span>CERRADA</li>
-          <li><span class="dot d-dead"></span>VENCIDA</li>
-          <li><span class="dot d-dead"></span>ANULADA</li>
-        </ul>
-      </div>
-      <div class="statecol">
-        <div class="h"><span class="pfx">NEG_</span><span class="t">Negociación</span></div>
-        <ul>
-          <li><span class="dot d-draft"></span>BORRADOR</li>
-          <li><span class="dot d-live"></span>ACTIVA</li>
-          <li><span class="dot d-hold"></span>PAUSADA · emisor / contraparte</li>
-          <li><span class="dot d-done"></span>CONCERTADA</li>
-          <li><span class="dot d-done"></span>CERRADA · emisor / contraparte</li>
-          <li><span class="dot d-dead"></span>VENCIDA · ANULADA · DECLINADA</li>
-        </ul>
-      </div>
-      <div class="statecol">
-        <div class="h"><span class="pfx">LIN_</span><span class="t">Ítem (renglón)</span></div>
-        <ul>
-          <li><span class="dot d-draft"></span>PENDIENTE</li>
-          <li><span class="dot d-live"></span>ACTIVA</li>
-          <li><span class="dot d-done"></span>CONCERTADA</li>
-          <li><span class="dot d-dead"></span>DECLINADA</li>
-          <li><span class="dot d-dead"></span>RETIRADA</li>
-          <li><span class="dot d-dead"></span>ANULADA</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="note-virtual reveal">
-      <span class="k">Regla — estado virtual</span>
-      <p>El estado real de una negociación o un ítem <strong>nunca se pisa</strong>. Si la solicitud padre
-         se cierra o pausa, el hijo no se reescribe: se refleja como <code>Cerrada (por solicitud)</code> o
-         <code>Pausada (por solicitud)</code>. La verdad de cada nivel se conserva; el efecto del padre se
-         explica, no se destruye.</p>
-    </div>
-  </div>
-</section>
-
-<section id="integrar">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Extensibilidad</p>
-      <h2>Otro front o un mobile se enchufan sin tocar la base.</h2>
-      <p>Como toda la lógica vive en la API y en la base, el contrato con el sistema es la <strong>API REST</strong>
-         —no el esquema de Postgres. Cualquier cliente que hable HTTP con un JWT válido es un ciudadano de primera:
-         el front web de hoy, una app mobile mañana, o la integración de un tercero.</p>
-    </div>
-
-    <div class="grid grid-2">
-      <div class="card reveal">
-        <h3>Lo que un cliente nuevo necesita</h3>
-        <div style="margin-top:14px">
-          <div class="api-line"><span class="verb v-post">POST</span><span class="path">/auth/login</span><span class="desc">obtener JWT del tenant</span></div>
-          <div class="api-line"><span class="verb v-get">GET</span><span class="path">/solicitudes</span><span class="desc">listar por cuenta</span></div>
-          <div class="api-line"><span class="verb v-post">POST</span><span class="path">/solicitudes</span><span class="desc">crear borrador</span></div>
-          <div class="api-line"><span class="verb v-post">POST</span><span class="path">/negociaciones</span><span class="desc">contraofertar (turno atómico)</span></div>
-          <div class="api-line"><span class="verb v-post">POST</span><span class="path">/adjudicaciones</span><span class="desc">concertar línea</span></div>
-        </div>
-        <p style="margin-top:16px;font-size:13.5px;color:var(--ink-faint);font-family:var(--mono)">rutas ilustrativas — el contrato real lo define la API</p>
-      </div>
-      <div class="card reveal">
-        <h3>Por qué es barato sumar clientes</h3>
-        <p style="margin-bottom:14px"><strong>Cero lógica duplicada.</strong> Las reglas —validación, estados,
-           atomicidad, aislamiento— viven una sola vez, en el backend. Un cliente nuevo no las reimplementa:
-           las consume.</p>
-        <p style="margin-bottom:14px"><strong>Mismo contrato, misma verdad.</strong> Web y mobile ven exactamente
-           los mismos estados y las mismas reglas, porque preguntan al mismo lugar.</p>
-        <p><strong>Autenticación uniforme.</strong> El JWT lleva el tenant; la API hace cumplir el aislamiento.
-           Un tercero jamás ve datos de otra corredora.</p>
-      </div>
-    </div>
-
-    <div class="diagram reveal" style="margin-top:24px">
-      <pre class="mermaid">
-flowchart LR
-  W["Web · React"] -->|REST + JWT| API["API QUOTIA"]
-  M["Mobile · RN/Flutter"] -->|REST + JWT| API
-  T["Tercero · ERP corredora"] -->|REST + JWT| API
-  API --> DB[("PostgreSQL<br/>multi-tenant")]
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section id="stack">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">El stack</p>
-      <h2>De la base al pixel.</h2>
-    </div>
-
-    <div class="reveal">
-      <div class="layer">
-        <div class="lbl">Datos</div>
-        <div>
-          <h3>PostgreSQL sobre Supabase</h3>
-          <p>El motor central. Estado, reglas y persistencia atómica vía RPCs. Multi-tenant con aislamiento
-             por esquema. Jobs programados con pg_cron para vencimientos.</p>
-          <div class="chips">
-            <span class="chip">PostgreSQL</span><span class="chip">Supabase</span>
-            <span class="chip">RPCs / funciones</span><span class="chip">EAV</span>
-            <span class="chip">search_path por tenant</span><span class="chip">pg_cron</span>
-          </div>
-        </div>
-      </div>
-      <div class="layer">
-        <div class="lbl">API</div>
-        <div>
-          <h3>FastAPI · Python</h3>
-          <p>Expone REST, valida con Pydantic, maneja JWT y resolución de tenant, y orquesta la lógica de
-             negocio. Python decide; SQL persiste. Es la única puerta a la base.</p>
-          <div class="chips">
-            <span class="chip">FastAPI</span><span class="chip">Pydantic</span>
-            <span class="chip">JWT</span><span class="chip">Repositorios / servicios</span>
-            <span class="chip">Deploy en Render</span>
-          </div>
-        </div>
-      </div>
-      <div class="layer">
-        <div class="lbl">Cliente</div>
-        <div>
-          <h3>React · Vite · TypeScript</h3>
-          <p>El front actual. Consume la API vía apiClient con TanStack Query, datasources y hooks. Lista de
-             solicitudes, editor de ítems y atributos, mesa de negociación, adjudicación y administración.</p>
-          <div class="chips">
-            <span class="chip">React</span><span class="chip">Vite</span><span class="chip">TypeScript</span>
-            <span class="chip">TanStack Query</span><span class="chip">apiClient</span>
-            <span class="chip">Deploy en Vercel</span>
-          </div>
-        </div>
-      </div>
-      <div class="layer">
-        <div class="lbl">Calidad</div>
-        <div>
-          <h3>Gate + E2E por feature</h3>
-          <p>Ninguna feature se da por terminada sin pasar el gate estático (typecheck / lint / build) y su
-             recorrido E2E. Cada feature, su prueba de extremo a extremo, corriendo en CI.</p>
-          <div class="chips">
-            <span class="chip">Playwright</span><span class="chip">CI / GitHub Actions</span>
-            <span class="chip">typecheck · lint · build</span>
-          </div>
-        </div>
-      </div>
+    <div class="access reveal">
+      <span class="pill">Accedé desde la web, sin instalaciones</span>
+      <span class="pill">Integrable con tus sistemas</span>
+      <span class="pill">Tus datos, separados de los de otras corredoras</span>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="muted">QUOTIA · Plataforma de negociación de cotizaciones para corredoras de cereales</div>
-    <div class="muted">Contexto agro argentino · soja · maíz · trigo</div>
+    <div class="muted">Quotia · Negociación de cotizaciones para corredoras de cereales</div>
+    <div class="muted">Del agro · soja · maíz · trigo</div>
   </div>
 </footer>
 
@@ -895,37 +585,6 @@ flowchart LR
     else { ctx.globalAlpha = 0.25; grains.forEach(g => { ctx.beginPath(); ctx.ellipse(g.x, g.y, g.r, g.r*1.7, 0.5, 0, Math.PI*2); ctx.fillStyle = accent(); ctx.fill(); }); }
     let t;
     window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { cancelAnimationFrame(raf); resize(); seed(); if (!reduce) draw(); }, 200); });
-  })();
-</script><script src="mermaid.min.js"></script>
-<script>
-  (function () {
-    function themeIsDark() {
-      var a = document.documentElement.getAttribute('data-theme');
-      if (a) return a === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    function renderMermaid() {
-      var blocks = document.querySelectorAll('pre.mermaid');
-      blocks.forEach(function (b) {
-        if (!b.getAttribute('data-src')) b.setAttribute('data-src', b.textContent);
-        b.removeAttribute('data-processed');
-        b.innerHTML = b.getAttribute('data-src');
-      });
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: 'base',
-        fontFamily: 'ui-sans-serif, system-ui, sans-serif',
-        themeVariables: themeIsDark()
-          ? { primaryColor:'#232A1C', primaryTextColor:'#E9E7DC', primaryBorderColor:'#9CBE6F', lineColor:'#7E8073', secondaryColor:'#1C2027', tertiaryColor:'#1C2027', clusterBkg:'#14171C', clusterBorder:'#3A4150', fontSize:'14px' }
-          : { primaryColor:'#E9EDDD', primaryTextColor:'#1B1E14', primaryBorderColor:'#5B7A3E', lineColor:'#757863', secondaryColor:'#FBFAF6', tertiaryColor:'#FBFAF6', clusterBkg:'#F2EFE8', clusterBorder:'#C2BCAA', fontSize:'14px' }
-      });
-      mermaid.run({ nodes: document.querySelectorAll('pre.mermaid') });
-    }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderMermaid);
-    else renderMermaid();
-    var btn = document.getElementById('themeBtn');
-    if (btn) btn.addEventListener('click', function () { setTimeout(renderMermaid, 30); });
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){ setTimeout(renderMermaid, 30); });
   })();
 </script>
 </body>

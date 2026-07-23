@@ -1,14 +1,17 @@
-# QUOTIA — Landing
+# Quotia — Landing
 
-Página de presentación de **QUOTIA**, la plataforma B2B de negociación de cotizaciones (RFQ) para corredoras de cereales.
+Página de presentación de **Quotia**, la plataforma para que las corredoras de cereales
+negocien cotizaciones de granos de punta a punta.
 
-Sitio estático de un solo archivo (`index.html`) con [mermaid](https://mermaid.js.org/) embebido localmente para los diagramas de arquitectura.
+Sitio estático de un solo archivo (`index.html`), enfoque comercial.
 
 ## Deploy
 
-Conectado a Vercel — cada push a `main` redeploya automáticamente en https://quotia-gold.vercel.app/
+Conectado a Vercel — cada push a `main` redeploya en https://quotia-rfq.vercel.app/
 
-## Estructura
+## Archivos
 
 - `index.html` — la landing completa (estilos y scripts inline)
-- `mermaid.min.js` — librería de diagramas servida localmente (evita depender de un CDN)
+- `quotia_wordmark_light.png` / `quotia_wordmark_dark.png` — logo del header por tema
+- `quotia_symbol.png` — símbolo (favicon)
+- `quotia_logo.png` — logo original (fuente)
