@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="QUOTIA — Plataforma B2B de negociación de cotizaciones para corredoras de cereales.">
-<title>quotia - rfq</title>
+<title>Quotia RFQ</title>
+<link rel="icon" type="image/png" href="quotia_symbol.png">
 <style>*{margin:0;padding:0}img{max-width:100%}</style>
 </head>
 <body>
@@ -118,16 +119,14 @@
     border-bottom: 1px solid var(--line);
   }
   .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
-  .brand { display: flex; align-items: center; gap: 11px; font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
-  .brand .glyph {
-    width: 26px; height: 26px; flex: none; border-radius: 50%;
-    background:
-      radial-gradient(circle at 50% 18%, var(--accent) 0 18%, transparent 19%),
-      radial-gradient(circle at 30% 55%, var(--accent) 0 15%, transparent 16%),
-      radial-gradient(circle at 70% 55%, var(--accent) 0 15%, transparent 16%),
-      radial-gradient(circle at 40% 82%, var(--accent) 0 13%, transparent 14%),
-      radial-gradient(circle at 62% 82%, var(--accent) 0 13%, transparent 14%);
-    border: 1.5px solid var(--accent-deep);
+  .brand { display: flex; align-items: center; }
+  .brand .wordmark { height: 30px; width: auto; display: block; }
+  .brand .wordmark.dark { display: none; }
+  :root[data-theme="dark"] .brand .wordmark.dark { display: block; }
+  :root[data-theme="dark"] .brand .wordmark.light { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .brand .wordmark.dark { display: block; }
+    :root:not([data-theme="light"]) .brand .wordmark.light { display: none; }
   }
   .navlinks { display: flex; gap: 22px; align-items: center; }
   .navlinks a { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--ink-soft); text-decoration: none; }
@@ -308,7 +307,10 @@
 
 <header class="topbar">
   <div class="wrap">
-    <div class="brand"><span class="glyph" aria-hidden="true"></span> QUOTIA</div>
+    <div class="brand">
+      <img class="wordmark light" src="quotia_wordmark_light.png" alt="Quotia">
+      <img class="wordmark dark" src="quotia_wordmark_dark.png" alt="Quotia">
+    </div>
     <nav class="navlinks">
       <a href="#negocio">Negocio</a>
       <a href="#modulos">Módulos</a>
