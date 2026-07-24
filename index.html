@@ -145,8 +145,6 @@
   .compare .feat { font-weight: 600; color: var(--ink); width: 32%; }
   .compare td.us { color: var(--ink); background: color-mix(in srgb, var(--accent-wash) 55%, transparent); }
   .compare td.them { color: var(--ink-faint); }
-  .compare .yes { color: var(--ok); font-weight: 700; }
-  .compare .no { color: var(--crit); font-weight: 700; }
 
   /* ---------- Cierre / acceso ---------- */
   .closing { text-align: center; }
@@ -186,12 +184,13 @@
   .cal-intro { text-align: center; font-family: var(--serif); font-size: 22px; font-weight: 600; margin-bottom: 22px; }
   .cal-intro #cal-nombre { color: var(--accent-deep); }
   #my-cal-inline-quotia-beta-tester {
-    width: 100%; min-height: 640px;
+    width: 100%;
     border: 1px solid var(--line); border-radius: 8px;
     background: var(--bg-raise); overflow: hidden;
   }
-  /* el iframe que inyecta Cal ocupa todo el contenedor */
-  #my-cal-inline-quotia-beta-tester iframe { width: 100% !important; min-height: 640px; border: 0; }
+  /* el iframe toma la altura que Cal calcula dinámicamente (sin forzar min-height,
+     así no quedan huecos arriba/abajo dentro del propio iframe) */
+  #my-cal-inline-quotia-beta-tester iframe { width: 100% !important; display: block; border: 0; }
 
   /* ---------- Footer ---------- */
   footer { border-top: 1px solid var(--line); padding: 40px 0 60px; }
@@ -219,11 +218,10 @@
 <section class="hero first">
   <canvas class="grain-field" id="grain" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="eyebrow">Para corredoras de cereales</p>
     <h1>Toda la negociación de tus <em>cotizaciones</em>, en un solo lugar.</h1>
     <p class="lede">
-      Quotia es la plataforma donde las corredoras piden, reciben, negocian y cierran cotizaciones de granos.
-      Del pedido a la adjudicación, con la ida y vuelta completa —oferta y contraoferta— ordenada, trazable
+      Quotia es la plataforma donde las corredoras solicitan, reciben, negocian y cierran cotizaciones de granos.
+      De la solicitud a la adjudicación, con la ida y vuelta completa —oferta y contraoferta— ordenada, trazable
       y adaptada a cómo trabaja tu corredora.
     </p>
 
@@ -233,10 +231,9 @@
     </div>
 
     <div class="hero-meta">
-      <div class="cell"><div class="k">Un flujo</div><div class="v">Pedir · Cotizar<br>Negociar · Adjudicar</div></div>
+      <div class="cell"><div class="k">Un flujo</div><div class="v">Solicitar · Cotizar<br>Negociar · Adjudicar</div></div>
       <div class="cell"><div class="k">A tu medida</div><div class="v">Se adapta a las reglas<br>de tu negocio</div></div>
       <div class="cell"><div class="k">Todo el rastro</div><div class="v">Cada oferta y acuerdo<br>queda registrado</div></div>
-      <div class="cell"><div class="k">Del agro</div><div class="v">Pensada para granos<br>soja · maíz · trigo</div></div>
     </div>
   </div>
 </section>
@@ -251,12 +248,12 @@
     <div class="timeline reveal">
       <div class="tl-step">
         <span class="tl-n">01</span>
-        <h3>Pedido</h3>
+        <h3>Solicitud</h3>
         <p>Publicás las condiciones: calidad, puerto, pago.</p>
       </div>
       <div class="tl-step">
         <span class="tl-n">02</span>
-        <h3>Cotizaciones</h3>
+        <h3>Ofertas</h3>
         <p>Las contrapartes ofertan en su panel, a ciegas del resto.</p>
       </div>
       <div class="tl-step">
@@ -293,32 +290,32 @@
           <tbody>
             <tr>
               <td class="feat">Negociación de ida y vuelta</td>
-              <td class="us"><span class="yes">Sí</span> — oferta y contraoferta hasta el acuerdo, con vigencia y pausa</td>
-              <td class="them"><span class="no">No</span> — se recibe una cotización y se elige</td>
+              <td class="us">Oferta y contraoferta hasta el acuerdo, con vigencia y pausa</td>
+              <td class="them">Se recibe una cotización y se elige</td>
             </tr>
             <tr>
               <td class="feat">Se adapta a tu negocio</td>
-              <td class="us"><span class="yes">Sí</span> — definís qué se pide, qué se negocia y qué condiciones importan</td>
+              <td class="us">Definís qué se pide, qué se negocia y qué condiciones importan</td>
               <td class="them">Formularios fijos, poco o nada configurables</td>
             </tr>
             <tr>
               <td class="feat">Comparación de ofertas</td>
-              <td class="us"><span class="yes">Sí</span> — todas las propuestas lado a lado, listas para decidir</td>
+              <td class="us">Todas las propuestas lado a lado, listas para decidir</td>
               <td class="them">A mano, en planillas aparte</td>
             </tr>
             <tr>
               <td class="feat">Trazabilidad completa</td>
-              <td class="us"><span class="yes">Sí</span> — cada oferta y acuerdo queda registrado y reconstruible</td>
+              <td class="us">Cada oferta y acuerdo queda registrado y reconstruible</td>
               <td class="them">Historial parcial o disperso</td>
             </tr>
             <tr>
               <td class="feat">Segmentación y accesos</td>
-              <td class="us"><span class="yes">Sí</span> — por cartera, cuenta y rol; cada quien ve lo suyo</td>
+              <td class="us">Por cartera, cuenta y rol; cada quien ve lo suyo</td>
               <td class="them">Accesos genéricos, poca separación</td>
             </tr>
             <tr>
               <td class="feat">Pensada para el agro</td>
-              <td class="us"><span class="yes">Sí</span> — granos, puertos y condiciones del rubro</td>
+              <td class="us">Granos, puertos y condiciones del rubro</td>
               <td class="them">Genérica, sin conocer el sector</td>
             </tr>
           </tbody>
@@ -355,7 +352,7 @@
 <section id="acceso" class="closing">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow" style="justify-content:center">Acceso</p>
+      <p class="eyebrow" style="justify-content:center">Integración</p>
       <h2>Lista para usar, y lista para conectarse.</h2>
       <p>Quotia funciona en tu navegador, sin instalar nada. Y como su lógica está separada de la interfaz,
          puede integrarse con los sistemas que ya usa tu corredora.</p>
