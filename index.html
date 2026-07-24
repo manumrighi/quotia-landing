@@ -18,8 +18,11 @@
     --accent: #9CBE6F; --accent-deep: #B6D488; --accent-wash: #232A1C;
     --earth: #C79A5E; --ok: #6FB07E; --warn: #D2A44E; --crit: #D9755E; --info: #7FA6C6;
     --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* --mono ya no es monoespaciada: usamos el mismo stack sans (Inter / San Francisco).
+       Se conserva el nombre de la variable para no tocar sus usos; el aire de "etiqueta"
+       lo dan el tamaño chico + letter-spacing donde corresponde. */
+    --mono: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --maxw: 1080px; --readw: 64ch; --radius: 3px;
   }
   :root { color-scheme: dark; }
@@ -492,8 +495,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="muted">Quotia · Negociación de cotizaciones para corredoras de cereales</div>
-    <div class="muted">Del agro · soja · maíz · trigo</div>
+    <div class="muted">Quotia · © 2026</div>
   </div>
 </footer>
 
