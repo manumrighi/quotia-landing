@@ -200,6 +200,75 @@
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+  /* ============================================================
+     MOBILE — pulido para pantallas chicas (<= 640px)
+     ============================================================ */
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 20px; }
+
+    /* menos aire vertical: en celu el scroll largo cansa */
+    section { padding: 48px 0; }
+    .hero { padding: 44px 0 40px; }
+    .sec-head { margin-bottom: 30px; }
+
+    /* hero más contenido */
+    .hero h1 { font-size: clamp(30px, 9vw, 40px); }
+    .hero .lede { font-size: 17px; margin-top: 20px; }
+
+    /* botones a lo ancho, uno debajo del otro y bien tocables */
+    .hero-cta { flex-direction: column; gap: 10px; margin-top: 26px; }
+    .hero-cta .btn { width: 100%; justify-content: center; padding: 14px 20px; }
+
+    /* hero-meta: apilado prolijo, con líneas horizontales en vez de bordes verticales colgando */
+    .hero-meta { flex-direction: column; margin-top: 40px; border-bottom: 0; }
+    .hero-meta .cell { flex: none; width: 100%; border-right: 0; border-bottom: 1px solid var(--line); padding: 18px 0; }
+    .hero-meta .cell:last-child { border-bottom: 1px solid var(--line); }
+    .hero-meta .k { font-size: 22px; }
+
+    /* timeline: los conectores horizontales no aplican en 1 columna */
+    .timeline { gap: 22px; }
+    .tl-step { padding-top: 26px; }
+    .tl-step h3 { font-size: 19px; }
+
+    /* tarjetas de roles un poco más compactas */
+    .role { padding: 20px; }
+
+    /* pills de integración: a lo ancho, alineadas a la izquierda */
+    .access { flex-direction: column; align-items: stretch; gap: 10px; }
+    .access .pill { text-align: center; }
+
+    /* ---- Tabla comparativa: apilar por fila (sin scroll lateral) ---- */
+    .compare-wrap { overflow-x: visible; border: 0; border-radius: 0; }
+    .compare { min-width: 0; width: 100%; display: block; font-size: 14.5px; }
+    .compare thead { display: none; }               /* el header de columnas no aplica apilado */
+    .compare tbody, .compare tr, .compare td { display: block; width: 100%; }
+    .compare tr {
+      border: 1px solid var(--line); border-radius: 8px;
+      background: var(--bg-raise); margin-bottom: 14px; padding: 4px 0; overflow: hidden;
+    }
+    .compare td { border: 0; padding: 12px 18px; }
+    /* la característica como encabezado del bloque */
+    .compare td.feat {
+      width: 100%; font-family: var(--serif); font-size: 17px; font-weight: 600;
+      color: var(--ink); background: var(--bg-sink); padding: 14px 18px; margin-bottom: 4px;
+    }
+    /* Quotia vs Común, cada uno con su etiqueta */
+    .compare td.us, .compare td.them { position: relative; padding-left: 18px; }
+    .compare td.us { background: color-mix(in srgb, var(--accent-wash) 45%, transparent); }
+    .compare td.us::before, .compare td.them::before {
+      content: attr(data-label);
+      display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .compare td.us::before { color: var(--accent-deep); }
+    .compare td.them::before { color: var(--ink-faint); }
+    .compare td.them { color: var(--ink-faint); }
+
+    /* Cal.com: el layout month_view no entra en celu; que respire */
+    #demo .wrap { max-width: 100%; }
+  }
 </style>
 
 <header class="topbar">
@@ -290,33 +359,33 @@
           <tbody>
             <tr>
               <td class="feat">Negociación de ida y vuelta</td>
-              <td class="us">Oferta y contraoferta hasta el acuerdo, con vigencia y pausa</td>
-              <td class="them">Se recibe una cotización y se elige</td>
+              <td class="us" data-label="Quotia">Oferta y contraoferta hasta el acuerdo, con vigencia y pausa</td>
+              <td class="them" data-label="Herramienta común">Se recibe una cotización y se elige</td>
             </tr>
             <tr>
               <td class="feat">Se adapta a tu negocio</td>
-              <td class="us">Definís qué se pide, qué se negocia y qué condiciones importan</td>
-              <td class="them">Formularios fijos, poco o nada configurables</td>
+              <td class="us" data-label="Quotia">Definís qué se pide, qué se negocia y qué condiciones importan</td>
+              <td class="them" data-label="Herramienta común">Formularios fijos, poco o nada configurables</td>
             </tr>
             <tr>
               <td class="feat">Comparación de ofertas</td>
-              <td class="us">Todas las propuestas lado a lado, listas para decidir</td>
-              <td class="them">A mano, en planillas aparte</td>
+              <td class="us" data-label="Quotia">Todas las propuestas lado a lado, listas para decidir</td>
+              <td class="them" data-label="Herramienta común">A mano, en planillas aparte</td>
             </tr>
             <tr>
               <td class="feat">Trazabilidad completa</td>
-              <td class="us">Cada oferta y acuerdo queda registrado y reconstruible</td>
-              <td class="them">Historial parcial o disperso</td>
+              <td class="us" data-label="Quotia">Cada oferta y acuerdo queda registrado y reconstruible</td>
+              <td class="them" data-label="Herramienta común">Historial parcial o disperso</td>
             </tr>
             <tr>
               <td class="feat">Segmentación y accesos</td>
-              <td class="us">Por cartera, cuenta y rol; cada quien ve lo suyo</td>
-              <td class="them">Accesos genéricos, poca separación</td>
+              <td class="us" data-label="Quotia">Por cartera, cuenta y rol; cada quien ve lo suyo</td>
+              <td class="them" data-label="Herramienta común">Accesos genéricos, poca separación</td>
             </tr>
             <tr>
               <td class="feat">Pensada para el agro</td>
-              <td class="us">Granos, puertos y condiciones del rubro</td>
-              <td class="them">Genérica, sin conocer el sector</td>
+              <td class="us" data-label="Quotia">Granos, puertos y condiciones del rubro</td>
+              <td class="them" data-label="Herramienta común">Genérica, sin conocer el sector</td>
             </tr>
           </tbody>
         </table>
