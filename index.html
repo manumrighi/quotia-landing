@@ -114,6 +114,21 @@
   .hero-meta .k { font-family: var(--serif); font-size: 26px; color: var(--accent-deep); line-height: 1.1; }
   .hero-meta .v { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); margin-top: 10px; }
 
+  /* ---------- Botones / CTA ---------- */
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+  .btn {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.03em;
+    padding: 13px 24px; border-radius: var(--radius); text-decoration: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 9px; border: 1px solid transparent;
+    transition: transform .12s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent-deep); }
+  :root[data-theme="dark"] .btn-primary { color: #14171C; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn-primary { color: #14171C; } }
+  .btn-primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-deep); }
+
   /* ---------- Sections ---------- */
   section { padding: 78px 0; border-top: 1px solid var(--line); }
   section.first { border-top: 0; }
@@ -156,16 +171,6 @@
   .benefit h3 { font-size: 19px; margin: 14px 0 8px; }
   .benefit p { margin: 0; color: var(--ink-soft); font-size: 15.5px; line-height: 1.55; }
 
-  /* ---------- Módulos (capacidades) ---------- */
-  .mod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-  @media (max-width: 860px) { .mod-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .mod-grid { grid-template-columns: 1fr; } }
-  .mod { background: var(--bg-raise); padding: 22px 22px; }
-  .mod:hover { background: var(--bg); }
-  .mod .ic { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--accent-deep); text-transform: uppercase; }
-  .mod h3 { font-family: var(--sans); font-weight: 650; font-size: 16.5px; letter-spacing: 0; margin: 9px 0 6px; }
-  .mod p { margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
-
   /* ---------- Roles ---------- */
   .roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   @media (max-width: 820px) { .roles { grid-template-columns: 1fr; } }
@@ -204,6 +209,45 @@
   .access { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
   .access .pill { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.03em; color: var(--ink-soft); background: var(--bg-raise); border: 1px solid var(--line); border-radius: 100px; padding: 9px 18px; }
 
+  /* subtítulo de la comparativa dentro de Beneficios */
+  .compare-lead { font-family: var(--serif); font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 8px 0 16px; }
+
+  /* ---------- Demo / formulario ---------- */
+  #demo { scroll-margin-top: 70px; }
+  .demo-card {
+    background: var(--bg-raise); border: 1px solid var(--line); border-radius: 8px;
+    padding: 40px; max-width: 720px; margin: 0 auto;
+  }
+  @media (max-width: 560px) { .demo-card { padding: 26px 22px; } }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
+  @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); }
+  .field label .req { color: var(--accent-deep); }
+  .field input, .field select {
+    font-family: var(--sans); font-size: 15px; color: var(--ink);
+    background: var(--bg); border: 1px solid var(--line-strong); border-radius: var(--radius);
+    padding: 11px 13px; width: 100%; transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .field select { cursor: pointer; appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--ink-faint) 50%), linear-gradient(135deg, var(--ink-faint) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 34px; }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+  .field input::placeholder { color: var(--ink-faint); }
+  .demo-submit { margin-top: 24px; }
+  .demo-submit .btn { width: 100%; justify-content: center; font-size: 14px; padding: 15px 24px; }
+  .form-note { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); text-align: center; margin-top: 14px; letter-spacing: 0.02em; }
+
+  /* contenedor del calendario Cal.com (oculto hasta enviar) */
+  #cal-embed { margin-top: 30px; }
+  #cal-embed[hidden] { display: none; }
+  .cal-intro { text-align: center; font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 18px; }
+  #my-cal-inline {
+    min-height: 480px; border: 1px dashed var(--line-strong); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); overflow: hidden;
+  }
+  #my-cal-inline .cal-placeholder { font-family: var(--mono); font-size: 13px; color: var(--ink-faint); text-align: center; padding: 24px; }
+
   /* ---------- Footer ---------- */
   footer { border-top: 1px solid var(--line); padding: 40px 0 60px; }
   footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
@@ -223,8 +267,7 @@
     <nav class="navlinks">
       <a href="#como">Cómo funciona</a>
       <a href="#beneficios">Beneficios</a>
-      <a href="#capacidades">Capacidades</a>
-      <a href="#ventajas">Por qué Quotia</a>
+      <a href="#demo">Probar la demo</a>
       <button class="theme-btn persist" id="themeBtn" type="button">tema</button>
     </nav>
   </div>
@@ -240,6 +283,11 @@
       Del pedido a la adjudicación, con la ida y vuelta completa —oferta y contraoferta— ordenada, trazable
       y adaptada a cómo trabaja tu corredora.
     </p>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#demo">Quiero probar la Demo →</a>
+      <a class="btn btn-ghost" href="#como">Ver cómo funciona</a>
+    </div>
 
     <div class="hero-meta">
       <div class="cell"><div class="k">Un flujo</div><div class="v">Pedir · Cotizar<br>Negociar · Adjudicar</div></div>
@@ -301,91 +349,80 @@
       <div class="benefit">
         <div class="bi">◆</div>
         <h3>Negociás, no solo recibís precios</h3>
-        <p>La mayoría de las herramientas terminan cuando llega la oferta. Quotia sostiene la contraoferta hasta el acuerdo, que es donde de verdad se define el negocio.</p>
+        <p>Oferta y contraoferta hasta el acuerdo, que es donde se define el negocio.</p>
       </div>
       <div class="benefit">
         <div class="bi">▲</div>
         <h3>Todo en un solo lugar</h3>
-        <p>Se terminan las cotizaciones perdidas en mails, planillas y mensajes sueltos. Cada pedido, oferta y cierre vive ordenado en la plataforma.</p>
+        <p>Se acaban las cotizaciones perdidas entre mails, planillas y mensajes.</p>
       </div>
       <div class="benefit">
         <div class="bi">●</div>
         <h3>Trazabilidad total</h3>
-        <p>Quién ofertó qué, cuándo y cómo se cerró: todo queda registrado. Podés reconstruir cualquier negociación cuando lo necesites.</p>
+        <p>Quién ofertó qué y cómo se cerró: todo queda registrado y reconstruible.</p>
       </div>
       <div class="benefit">
         <div class="bi">■</div>
-        <h3>Se adapta a tu forma de trabajar</h3>
-        <p>Definís qué se pide, qué se negocia y qué condiciones importan en cada tipo de operación. La plataforma se amolda a tu negocio, no al revés.</p>
+        <h3>Se adapta a tu operación</h3>
+        <p>Vos definís qué se pide y qué se negocia. La plataforma se amolda a tu negocio.</p>
       </div>
       <div class="benefit">
         <div class="bi">◐</div>
         <h3>Cada quien ve lo suyo</h3>
-        <p>Corredores, administradores y contrapartes acceden solo a lo que les corresponde. Orden, control y confidencialidad entre las partes.</p>
+        <p>Equipo y contrapartes acceden solo a lo que les corresponde. Orden y confidencialidad.</p>
       </div>
       <div class="benefit">
         <div class="bi">✦</div>
-        <h3>Decisiones más rápidas</h3>
-        <p>Todas las ofertas de un pedido, lado a lado. Comparás precio y condiciones de un vistazo y adjudicás con criterio, sin armar comparativos a mano.</p>
+        <h3>Decidís más rápido</h3>
+        <p>Todas las ofertas lado a lado: comparás y adjudicás sin armar planillas a mano.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<section id="capacidades">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Capacidades</p>
-      <h2>Todo lo que necesitás para operar.</h2>
-      <p>Una plataforma completa: desde configurar cómo trabaja tu corredora hasta cerrar el negocio y
-         analizar los resultados.</p>
-    </div>
-
-    <div class="mod-grid reveal">
-      <div class="mod">
-        <span class="ic">Operar</span>
-        <h3>Solicitudes</h3>
-        <p>Creá, editá y publicá pedidos de cotización con sus ítems y condiciones. Seguí cada uno a lo largo de todo su ciclo.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Operar</span>
-        <h3>Sala de negociación</h3>
-        <p>La mesa en vivo: oferta, contraoferta, pausa y cierre, turno a turno y con tiempos de vigencia claros.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Operar</span>
-        <h3>Bandeja de contraparte</h3>
-        <p>Cada contraparte tiene su espacio para ver sus pedidos y armar propuestas, sin acceso al resto del mercado.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Analizar</span>
-        <h3>Panel comparativo</h3>
-        <p>Todas las ofertas de un pedido, lado a lado, para comparar precio y condiciones y decidir con criterio.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Analizar</span>
-        <h3>Tablero de control</h3>
-        <p>El estado del negocio de un vistazo: pedidos activos, negociaciones en curso y lo que necesita tu atención.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Configurar</span>
-        <h3>Plantillas de pedido</h3>
-        <p>Definí modelos de pedido reutilizables: qué se pide, qué es obligatorio y qué queda abierto a negociar.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Configurar</span>
-        <h3>Condiciones y catálogos</h3>
-        <p>Armá las condiciones de tu negocio y sus valores —monedas, unidades, calidades— para pedir y cotizar siempre igual.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Organizar</span>
-        <h3>Carteras</h3>
-        <p>Agrupá tus productores y contrapartes en carteras y asigná qué corredor trabaja cada una.</p>
-      </div>
-      <div class="mod">
-        <span class="ic">Administrar</span>
-        <h3>Usuarios y accesos</h3>
-        <p>Sumá a tu equipo y a tus contrapartes con el rol justo. Cada persona ve y hace solo lo que le corresponde.</p>
+    <div class="reveal" style="margin-top:52px">
+      <span class="edge-tag">En resumen</span>
+      <h3 class="compare-lead">Quotia vs. herramientas tradicionales</h3>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th class="feat">&nbsp;</th>
+              <th class="us">Quotia</th>
+              <th>Herramienta común</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feat">Negociación de ida y vuelta</td>
+              <td class="us"><span class="yes">Sí</span> — oferta y contraoferta hasta el acuerdo, con vigencia y pausa</td>
+              <td class="them"><span class="no">No</span> — se recibe una cotización y se elige</td>
+            </tr>
+            <tr>
+              <td class="feat">Se adapta a tu negocio</td>
+              <td class="us"><span class="yes">Sí</span> — definís qué se pide, qué se negocia y qué condiciones importan</td>
+              <td class="them">Formularios fijos, poco o nada configurables</td>
+            </tr>
+            <tr>
+              <td class="feat">Comparación de ofertas</td>
+              <td class="us"><span class="yes">Sí</span> — todas las propuestas lado a lado, listas para decidir</td>
+              <td class="them">A mano, en planillas aparte</td>
+            </tr>
+            <tr>
+              <td class="feat">Trazabilidad completa</td>
+              <td class="us"><span class="yes">Sí</span> — cada oferta y acuerdo queda registrado y reconstruible</td>
+              <td class="them">Historial parcial o disperso</td>
+            </tr>
+            <tr>
+              <td class="feat">Segmentación y accesos</td>
+              <td class="us"><span class="yes">Sí</span> — por cartera, cuenta y rol; cada quien ve lo suyo</td>
+              <td class="them">Accesos genéricos, poca separación</td>
+            </tr>
+            <tr>
+              <td class="feat">Pensada para el agro</td>
+              <td class="us"><span class="yes">Sí</span> — granos, puertos y condiciones del rubro</td>
+              <td class="them">Genérica, sin conocer el sector</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -435,62 +472,6 @@
   </div>
 </section>
 
-<section id="ventajas">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Por qué Quotia</p>
-      <h2>La diferencia está en la negociación.</h2>
-      <p>Muchas herramientas de cotización terminan cuando llegan las ofertas: recibís precios y elegís.
-         Quotia empieza justo ahí, y se adapta a cómo negocia tu corredora.</p>
-    </div>
-
-    <span class="edge-tag reveal">Quotia vs. una herramienta de cotización común</span>
-    <div class="compare-wrap reveal">
-      <table class="compare">
-        <thead>
-          <tr>
-            <th class="feat">&nbsp;</th>
-            <th class="us">Quotia</th>
-            <th>Herramienta común</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="feat">Negociación de ida y vuelta</td>
-            <td class="us"><span class="yes">Sí</span> — oferta y contraoferta hasta el acuerdo, con vigencia y pausa</td>
-            <td class="them"><span class="no">No</span> — se recibe una cotización y se elige</td>
-          </tr>
-          <tr>
-            <td class="feat">Se adapta a tu negocio</td>
-            <td class="us"><span class="yes">Sí</span> — definís qué se pide, qué se negocia y qué condiciones importan</td>
-            <td class="them">Formularios fijos, poco o nada configurables</td>
-          </tr>
-          <tr>
-            <td class="feat">Comparación de ofertas</td>
-            <td class="us"><span class="yes">Sí</span> — todas las propuestas lado a lado, listas para decidir</td>
-            <td class="them">A mano, en planillas aparte</td>
-          </tr>
-          <tr>
-            <td class="feat">Trazabilidad completa</td>
-            <td class="us"><span class="yes">Sí</span> — cada oferta y acuerdo queda registrado y reconstruible</td>
-            <td class="them">Historial parcial o disperso</td>
-          </tr>
-          <tr>
-            <td class="feat">Segmentación y accesos</td>
-            <td class="us"><span class="yes">Sí</span> — por cartera, cuenta y rol; cada quien ve lo suyo</td>
-            <td class="them">Accesos genéricos, poca separación</td>
-          </tr>
-          <tr>
-            <td class="feat">Pensada para el agro</td>
-            <td class="us"><span class="yes">Sí</span> — granos, puertos y condiciones del rubro</td>
-            <td class="them">Genérica, sin conocer el sector</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
 <section id="acceso" class="closing">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -503,6 +484,80 @@
       <span class="pill">Accedé desde la web, sin instalaciones</span>
       <span class="pill">Integrable con tus sistemas</span>
       <span class="pill">Tus datos, separados de los de otras corredoras</span>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      <p class="eyebrow" style="justify-content:center">Beta · acceso temprano</p>
+      <h2>Quiero ser Beta Tester / Probar la Demo</h2>
+      <p>Dejanos tus datos y agendemos una llamada de 30 minutos para mostrarte cómo Quotia
+         puede adaptarse a tu corredora.</p>
+    </div>
+
+    <div class="demo-card reveal">
+      <form id="demo-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-nombre">Nombre completo <span class="req">*</span></label>
+            <input id="f-nombre" name="nombre" type="text" required autocomplete="name" placeholder="Nombre y apellido">
+          </div>
+          <div class="field">
+            <label for="f-wsp">WhatsApp <span class="req">*</span></label>
+            <input id="f-wsp" name="whatsapp" type="tel" required autocomplete="tel" placeholder="+54 9 ...">
+          </div>
+          <div class="field">
+            <label for="f-email">Email corporativo <span class="req">*</span></label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="vos@tucorredora.com">
+          </div>
+          <div class="field">
+            <label for="f-empresa">Empresa / Corredora <span class="req">*</span></label>
+            <input id="f-empresa" name="empresa" type="text" required autocomplete="organization" placeholder="Nombre de la corredora">
+          </div>
+          <div class="field full">
+            <label for="f-interes">¿Qué te interesa de Quotia? <span class="req">*</span></label>
+            <select id="f-interes" name="interes" required>
+              <option value="" disabled selected>Elegí una opción…</option>
+              <option>Negociar (oferta y contraoferta)</option>
+              <option>Ordenar mi operación en un solo lugar</option>
+              <option>Comparar ofertas y decidir mejor</option>
+              <option>Trazabilidad de mis negociaciones</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+        <div class="demo-submit">
+          <button type="submit" class="btn btn-primary">Agendar Demo de 30 min</button>
+        </div>
+        <p class="form-note">Sin compromiso · coordinamos día y horario en el próximo paso</p>
+      </form>
+
+      <!-- Calendario Cal.com: oculto hasta que el formulario sea válido -->
+      <div id="cal-embed" hidden>
+        <p class="cal-intro">¡Genial! Elegí día y horario 👇</p>
+
+        <!-- ================================================================
+             PEGAR AQUÍ EL EMBED HTML (iframe) DE CAL.COM
+             --------------------------------------------------------------
+             1) Cal.com te da un bloque <script> que hace algo como:
+                  Cal("init", "30min", {origin:"https://cal.com"});
+                  Cal.ns["30min"]("inline", {
+                    elementOrSelector:"#my-cal-inline",
+                    config:{layout:"month_view"},
+                    calLink:"TU_USUARIO/30min"
+                  });
+             2) Pegá ese <script> JUSTO DEBAJO de este comentario.
+             3) Asegurate de que el elementOrSelector apunte a  #my-cal-inline
+                (el div de abajo). Si Cal.com usa otro id, cambialo o ajustá el div.
+             4) Podés borrar el <div class="cal-placeholder"> cuando el calendario cargue.
+             ================================================================ -->
+
+        <div id="my-cal-inline">
+          <span class="cal-placeholder">Aquí se cargará tu calendario de Cal.com<br>(pegá el embed HTML donde indica el comentario)</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -585,6 +640,21 @@
     else { ctx.globalAlpha = 0.25; grains.forEach(g => { ctx.beginPath(); ctx.ellipse(g.x, g.y, g.r, g.r*1.7, 0.5, 0, Math.PI*2); ctx.fillStyle = accent(); ctx.fill(); }); }
     let t;
     window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { cancelAnimationFrame(raf); resize(); seed(); if (!reduce) draw(); }, 200); });
+  })();
+
+  // Demo form: valida y revela el calendario de Cal.com
+  (function () {
+    const form = document.getElementById('demo-form');
+    if (!form) return;
+    const calEmbed = document.getElementById('cal-embed');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // validación nativa: marca campos requeridos / email inválido
+      if (!form.reportValidity()) return;
+      // revelar el contenedor del calendario y llevar el foco ahí
+      calEmbed.hidden = false;
+      calEmbed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   })();
 </script>
 </body>
