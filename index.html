@@ -11,40 +11,18 @@
 <body>
 <style>
   :root {
-    --bg: #F2EFE8; --bg-raise: #FBFAF6; --bg-sink: #E7E3D8;
-    --ink: #1B1E14; --ink-soft: #4A4E3E; --ink-faint: #757863;
-    --line: #D6D1C2; --line-strong: #C2BCAA;
-    --accent: #5B7A3E; --accent-deep: #445E2C; --accent-wash: #E9EDDD;
-    --earth: #A9743B;
-    --ok: #3F7A4E; --warn: #B07C1E; --crit: #A6432E; --info: #4A6C8C;
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-    --maxw: 1080px; --readw: 64ch; --radius: 3px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14171C; --bg-raise: #1C2027; --bg-sink: #0F1116;
-      --ink: #E9E7DC; --ink-soft: #B4B4A6; --ink-faint: #7E8073;
-      --line: #2B303A; --line-strong: #3A4150;
-      --accent: #9CBE6F; --accent-deep: #B6D488; --accent-wash: #232A1C;
-      --earth: #C79A5E; --ok: #6FB07E; --warn: #D2A44E; --crit: #D9755E; --info: #7FA6C6;
-    }
-  }
-  :root[data-theme="light"] {
-    --bg: #F2EFE8; --bg-raise: #FBFAF6; --bg-sink: #E7E3D8;
-    --ink: #1B1E14; --ink-soft: #4A4E3E; --ink-faint: #757863;
-    --line: #D6D1C2; --line-strong: #C2BCAA;
-    --accent: #5B7A3E; --accent-deep: #445E2C; --accent-wash: #E9EDDD;
-    --earth: #A9743B; --ok: #3F7A4E; --warn: #B07C1E; --crit: #A6432E; --info: #4A6C8C;
-  }
-  :root[data-theme="dark"] {
+    /* Tema único: oscuro */
     --bg: #14171C; --bg-raise: #1C2027; --bg-sink: #0F1116;
     --ink: #E9E7DC; --ink-soft: #B4B4A6; --ink-faint: #7E8073;
     --line: #2B303A; --line-strong: #3A4150;
     --accent: #9CBE6F; --accent-deep: #B6D488; --accent-wash: #232A1C;
     --earth: #C79A5E; --ok: #6FB07E; --warn: #D2A44E; --crit: #D9755E; --info: #7FA6C6;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    --maxw: 1080px; --readw: 64ch; --radius: 3px;
   }
+  :root { color-scheme: dark; }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -76,22 +54,9 @@
   .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
   .brand { display: flex; align-items: center; }
   .brand .wordmark { height: 30px; width: auto; display: block; }
-  .brand .wordmark.dark { display: none; }
-  :root[data-theme="dark"] .brand .wordmark.dark { display: block; }
-  :root[data-theme="dark"] .brand .wordmark.light { display: none; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .brand .wordmark.dark { display: block; }
-    :root:not([data-theme="light"]) .brand .wordmark.light { display: none; }
-  }
   .navlinks { display: flex; gap: 22px; align-items: center; }
   .navlinks a { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--ink-soft); text-decoration: none; }
   .navlinks a:hover { color: var(--accent-deep); }
-  .theme-btn {
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em;
-    background: transparent; color: var(--ink-soft); border: 1px solid var(--line-strong);
-    border-radius: var(--radius); padding: 6px 11px; cursor: pointer;
-  }
-  .theme-btn:hover { border-color: var(--accent); color: var(--accent-deep); }
   @media (max-width: 760px) { .navlinks a:not(.persist) { display: none; } }
 
   /* ---------- Hero ---------- */
@@ -101,9 +66,7 @@
   .hero h1 em { font-style: italic; color: var(--accent-deep); }
   .hero .lede { font-size: clamp(18px, 2.3vw, 22px); color: var(--ink-soft); max-width: 56ch; margin: 28px 0 0; line-height: 1.5; }
 
-  .grain-field { position: absolute; inset: 0; z-index: 1; opacity: 0.5; pointer-events: none; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .grain-field { opacity: 0.35; } }
-  :root[data-theme="dark"] .grain-field { opacity: 0.35; }
+  .grain-field { position: absolute; inset: 0; z-index: 1; opacity: 0.35; pointer-events: none; }
 
   .hero-meta {
     display: flex; flex-wrap: wrap; gap: 0; margin-top: 60px;
@@ -122,9 +85,7 @@
     display: inline-flex; align-items: center; gap: 9px; border: 1px solid transparent;
     transition: transform .12s ease, background .2s ease, border-color .2s ease;
   }
-  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent-deep); }
-  :root[data-theme="dark"] .btn-primary { color: #14171C; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn-primary { color: #14171C; } }
+  .btn-primary { background: var(--accent); color: #14171C; border-color: var(--accent-deep); }
   .btn-primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
   .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent-deep); }
@@ -214,6 +175,7 @@
 
   /* ---------- Demo / formulario ---------- */
   #demo { scroll-margin-top: 70px; }
+  #demo .wrap { max-width: 1240px; }
   .demo-card {
     background: var(--bg-raise); border: 1px solid var(--line); border-radius: 8px;
     padding: 40px; max-width: 720px; margin: 0 auto;
@@ -237,14 +199,18 @@
   .demo-submit .btn { width: 100%; justify-content: center; font-size: 14px; padding: 15px 24px; }
   .form-note { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); text-align: center; margin-top: 14px; letter-spacing: 0.02em; }
 
-  /* contenedor del calendario Cal.com (oculto hasta enviar) */
-  #cal-embed { margin-top: 30px; }
+  /* contenedor del calendario Cal.com (NO existe hasta enviar el formulario) */
+  #cal-embed { margin-top: 40px; }
   #cal-embed[hidden] { display: none; }
-  .cal-intro { text-align: center; font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 18px; }
+  .cal-intro { text-align: center; font-family: var(--serif); font-size: 22px; font-weight: 600; margin-bottom: 22px; }
+  .cal-intro #cal-nombre { color: var(--accent-deep); }
   #my-cal-inline-quotia-beta-tester {
-    min-height: 550px; border: 1px solid var(--line); border-radius: 8px;
-    background: var(--bg); overflow: hidden;
+    width: 100%; min-height: 640px;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--bg-raise); overflow: hidden;
   }
+  /* el iframe que inyecta Cal ocupa todo el contenedor */
+  #my-cal-inline-quotia-beta-tester iframe { width: 100% !important; min-height: 640px; border: 0; }
 
   /* ---------- Footer ---------- */
   footer { border-top: 1px solid var(--line); padding: 40px 0 60px; }
@@ -259,14 +225,12 @@
 <header class="topbar">
   <div class="wrap">
     <div class="brand">
-      <img class="wordmark light" src="quotia_wordmark_light.png" alt="Quotia">
-      <img class="wordmark dark" src="quotia_wordmark_dark.png" alt="Quotia">
+      <img class="wordmark" src="quotia_wordmark_dark.png" alt="Quotia">
     </div>
     <nav class="navlinks">
       <a href="#como">Cómo funciona</a>
       <a href="#beneficios">Beneficios</a>
-      <a href="#demo">Probar la demo</a>
-      <button class="theme-btn persist" id="themeBtn" type="button">tema</button>
+      <a href="#demo" class="persist">Probar la demo</a>
     </nav>
   </div>
 </header>
@@ -532,28 +496,12 @@
         <p class="form-note">Sin compromiso · coordinamos día y horario en el próximo paso</p>
       </form>
 
-      <!-- Calendario Cal.com: oculto hasta que el formulario sea válido -->
-      <div id="cal-embed" hidden>
-        <p class="cal-intro">¡Genial! Elegí día y horario 👇</p>
+    </div>
 
-        <!-- Cal inline embed code begins -->
-        <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-quotia-beta-tester"></div>
-        <script type="text/javascript">
-          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", "quotia-beta-tester", {origin:"https://app.cal.com"});
-        Cal.config = Cal.config || {};
-        Cal.config.forwardQueryParams = true;
-
-          Cal.ns["quotia-beta-tester"]("inline", {
-            elementOrSelector:"#my-cal-inline-quotia-beta-tester",
-            config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
-            calLink: "mmorichirighi/quotia-beta-tester",
-          });
-
-          Cal.ns["quotia-beta-tester"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-        </script>
-        <!-- Cal inline embed code ends -->
-      </div>
+    <!-- Calendario Cal.com: NO existe hasta enviar el formulario; se inicializa por JS -->
+    <div id="cal-embed" hidden>
+      <p class="cal-intro">¡Genial, <span id="cal-nombre">ya casi está</span>! Elegí día y horario 👇</p>
+      <div id="my-cal-inline-quotia-beta-tester"></div>
     </div>
   </div>
 </section>
@@ -566,25 +514,6 @@
 </footer>
 
 <script>
-  // Theme toggle
-  (function () {
-    const btn = document.getElementById('themeBtn');
-    const root = document.documentElement;
-    function current() {
-      const attr = root.getAttribute('data-theme');
-      if (attr) return attr;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    function label() { btn.textContent = current() === 'dark' ? '☀ claro' : '☾ oscuro'; }
-    label();
-    btn.addEventListener('click', function () {
-      const next = current() === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      label();
-    });
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', label);
-  })();
-
   // Reveal on scroll
   (function () {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -638,18 +567,78 @@
     window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { cancelAnimationFrame(raf); resize(); seed(); if (!reduce) draw(); }, 200); });
   })();
 
-  // Demo form: valida y revela el calendario de Cal.com
+  // Demo form: valida y, recién ahí, inicializa y muestra el calendario de Cal.com.
+  // El embed NO existe hasta que el formulario es válido.
   (function () {
     const form = document.getElementById('demo-form');
     if (!form) return;
     const calEmbed = document.getElementById('cal-embed');
+    let calInit = false;
+
+    // Loader oficial de Cal.com (idéntico al snippet del embed)
+    function loadCal(C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal; let ar = arguments;
+        if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1]; api.q = api.q || [];
+          if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+          else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    }
+
+    function initCalOnce() {
+      if (calInit) return;
+      calInit = true;
+      loadCal(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "quotia-beta-tester", { origin: "https://app.cal.com" });
+      Cal.config = Cal.config || {};
+      Cal.config.forwardQueryParams = true;
+
+      // pre-llenar el calendario con lo que cargó el lead
+      // (Cal aplana estos campos de config como query params de prefill)
+      const notas = "Corredora: " + (form.empresa.value || "").trim()
+                  + " · WhatsApp: " + (form.whatsapp.value || "").trim()
+                  + " · Interés: " + (form.interes.value || "");
+
+      Cal.ns["quotia-beta-tester"]("inline", {
+        elementOrSelector: "#my-cal-inline-quotia-beta-tester",
+        config: {
+          layout: "month_view",
+          theme: "dark",
+          name: (form.nombre.value || "").trim(),
+          email: (form.email.value || "").trim(),
+          notes: notas
+        },
+        calLink: "mmorichirighi/quotia-beta-tester"
+      });
+
+      // forzar tema oscuro y branding acorde a la página
+      Cal.ns["quotia-beta-tester"]("ui", {
+        theme: "dark",
+        hideEventTypeDetails: false,
+        layout: "month_view",
+        cssVarsPerTheme: { dark: { "cal-brand": "#9CBE6F" } }
+      });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      // validación nativa: marca campos requeridos / email inválido
-      if (!form.reportValidity()) return;
-      // revelar el contenedor del calendario y llevar el foco ahí
+      if (!form.reportValidity()) return;           // validación nativa
+      const nombreSpan = document.getElementById('cal-nombre');
+      const nom = (form.nombre.value || "").trim().split(" ")[0];
+      if (nombreSpan && nom) nombreSpan.textContent = nom;
+      initCalOnce();                                 // recién acá aparece el embed
       calEmbed.hidden = false;
-      calEmbed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      requestAnimationFrame(function () {
+        calEmbed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     });
   })();
 </script>
